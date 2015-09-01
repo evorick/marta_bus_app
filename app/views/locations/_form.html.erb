@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= f.select :city, Location::CITY, {prompt: 'Select a city'}, {class: "form-control"} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Find my escape bus!", class: "btn btn-success" %>
   </div>
 <% end %>

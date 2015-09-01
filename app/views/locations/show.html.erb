@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h2>You are currently standing at...</h2>
 <p>
   <%= @location.my_location %>
@@ -18,4 +16,4 @@
   </p>
 <% end %>
 
-<%= link_to 'New Search', edit_location_path(@location) %>
+<%= link_to 'New Search', edit_location_path(@location), class: "btn btn-success" %>
