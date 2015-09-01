@@ -19,6 +19,23 @@
     <%= f.label :city %><br>
     <%= f.select :city, Location::CITY, {prompt: 'Select a city'}, {class: "form-control"} %>
   </div>
+  <div class="field form-group">
+    <%= f.label :distance %><br>
+    <div class="btn-group" data-toggle="buttons">
+      <%= f.label :distance, class: "btn btn-primary active" do %>
+        <%= f.radio_button :distance, 0.3, checked: true %>
+        0.3 miles
+      <% end %>
+      <%= f.label :distance, class: "btn btn-primary" do %>
+        <%= f.radio_button :distance, 0.5 %>
+        0.5 miles
+      <% end %>
+      <%= f.label :distance, class: "btn btn-primary" do %>
+        <%= f.radio_button :distance, 1 %>
+        1 mile
+      <% end %>
+    </div>
+  </div>
   <div class="actions">
     <%= f.submit "Find my escape bus!", class: "btn btn-success" %>
   </div>
