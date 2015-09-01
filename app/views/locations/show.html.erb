@@ -1,24 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<h2>You are currently standing at...</h2>
 <p>
-  <strong>Address:</strong>
-  <%= @location.address %>
+  <%= @location.my_location %>
 </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
+<h2>The closest buses are...</h2>
+<% if @bus_count == 0 %>
+  <p>...not really that close.  Time to walk, bike, taxi, or Uber.</p>
+<% end %>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
-</p>
+<% @nearby_buses.each do |bus| %>
+  <p>
+    <strong>Route:</strong> <%= "#{bus['ROUTE']} #{bus['DIRECTION']}" %><br>
+    <strong>Bus Number:</strong> <%= bus['VEHICLE'] %><br>
+    <strong>Next Stop:</strong> <%= bus['TIMEPOINT'] %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'New Search', edit_location_path(@location) %>
