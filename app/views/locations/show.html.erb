@@ -48,6 +48,16 @@
 
     nearbyBuses.forEach(function (bus){
       var busLatLng = new google.maps.LatLng(bus['LATITUDE'], bus['LONGITUDE']);
+      var contentString =
+        '<div id="content">' +
+          '<h3>Bus ' + bus['VEHICLE'] + ' ' + bus['DIRECTION'] + '</h3>' +
+          '<div id="bodyContent">' +
+            '<p>Next Stop: ' + bus['TIMEPOINT'] + '</p>' +
+          '</div>' +
+        '</div>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
 
       var marker = new google.maps.Marker({
         position: busLatLng,
@@ -55,6 +65,10 @@
         animation: google.maps.Animation.DROP,
         title: bus['VEHICLE'],
         icon: busIcon
+      });
+
+      google.maps.event.addListener(marker, 'click', function (){
+        infowindow.open(map, marker)
       });
     });
   }
