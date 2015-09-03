@@ -27,6 +27,8 @@
   function initialize() {
     var myLatLng = new google.maps.LatLng(<%= @location.latitude %>, <%= @location.longitude %>);
     var nearbyBuses = <%= raw @nearby_buses.to_json %>;
+    var busIcon = "<%= image_path 'bus_icon.png' %>";
+    var userIcon = "<%= image_path 'man_icon2.png' %>"
 
     var mapOptions = {
       center: myLatLng,
@@ -40,7 +42,8 @@
       position: myLatLng,
       map: map,
       animation: google.maps.Animation.DROP,
-      title: "You Are Here"
+      title: "You Are Here",
+      icon: userIcon
     });
 
     nearbyBuses.forEach(function (bus){
@@ -50,7 +53,8 @@
         position: busLatLng,
         map: map,
         animation: google.maps.Animation.DROP,
-        title: bus['VEHICLE']
+        title: bus['VEHICLE'],
+        icon: busIcon
       });
     });
   }
