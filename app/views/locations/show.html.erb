@@ -26,6 +26,7 @@
 <script type="text/javascript">
   function initialize() {
     var myLatLng = new google.maps.LatLng(<%= @location.latitude %>, <%= @location.longitude %>);
+    var nearbyBuses = <%= raw @nearby_buses.to_json %>;
 
     var mapOptions = {
       center: myLatLng,
@@ -40,6 +41,17 @@
       map: map,
       animation: google.maps.Animation.DROP,
       title: "You Are Here"
+    });
+
+    nearbyBuses.forEach(function (bus){
+      var busLatLng = new google.maps.LatLng(bus['LATITUDE'], bus['LONGITUDE']);
+
+      var marker = new google.maps.Marker({
+        position: busLatLng,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        title: bus['VEHICLE']
+      });
     });
   }
   google.maps.event.addDomListener(window, 'load', initialize);
