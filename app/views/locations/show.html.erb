@@ -28,7 +28,7 @@
     var myLatLng = new google.maps.LatLng(<%= @location.latitude %>, <%= @location.longitude %>);
     var nearbyBuses = <%= raw @nearby_buses.to_json %>;
     var busIcon = "<%= image_path 'bus_icon.png' %>";
-    var userIcon = "<%= image_path 'man_icon2.png' %>"
+    var userIcon = "<%= image_path 'man_icon.png' %>"
 
     var mapOptions = {
       center: myLatLng,
